@@ -1,11 +1,82 @@
 <!DOCTYPE html>
 <html>
     <head>
-
-    </head>
+<title>Rock Paper Scissors</title>
+<meta charset="UTF-8"/>  
+</head>
     <body>
         <script>
-            
-        </script>
+function computerselection(){
+    let compselect = ["rock", "paper", "scissors"];
+    let randomItem = compselect[Math.floor(Math.random()*compselect.length)];
+    return randomItem;
+} 
+
+function playerselection(){
+    let choice = prompt("Choose rock, paper or scissors!");
+    return (choice.toLowerCase());
+}
+function playround(playerselection, computerselection){
+let winner = "";
+if (playerselection == "rock"){
+    if (computerselection == "rock"){
+        alert ("It's a tie!");
+        return winner = "Tie";
+    }else if (computerselection == "scissors"){
+        alert ("You win!");
+        return winner = "Player"
+    }else if (computerselection == "paper"){
+        alert ("You lose!");
+        return winner = "Computer";
+    }
+}else if (playerselection == "paper"){
+    if (computerselection == "rock"){
+        alert ("You win!");
+        return winner = "Player";
+    }else if (computerselection == "paper"){
+        alert ("It's a tie!");
+        return winner = "Tie";
+    }else if (computerselection == "scissors"){
+        alert ("You lose!");
+        return winner = "Computer";
+    }
+}else if (playerselection == "scissors"){
+    if (computerselection == "rock"){
+        alert ("You lose!");
+        return winner = "Computer";
+    }else if (computerselection == "paper"){
+        alert ("You win!");
+        return winner = "Player";   
+    }else if (computerselection == "scissors"){
+        alert ("It's a tie!");
+        return winner = "Tie";
+    }
+}
+}
+function game(){
+    let playerScore = 0;
+    let compScore = 0;
+    while (playerScore < 3 && compScore < 3){
+        winner = (playround(playerselection(),computerselection()));
+        switch (winner){
+            case "Computer":
+              compScore++; 
+            break;
+            case "Player":
+              playerScore++;      
+            break;
+            default:
+            break;
+        }
+    if (playerScore == 3){
+        alert("You win the game fammo!");
+    }
+    else if (compScore == 3){
+        alert("You lost the game to the computer...bummer.");
+    }
+    }
+}
+console.log(game());
+</script>
     </body>
 </html>
